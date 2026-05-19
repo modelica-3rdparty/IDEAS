@@ -43,6 +43,7 @@ model HeatSource_HP_AW
         transformation(extent={{-120,40},{-80,80}}), iconTransformation(extent={{-110,20},
         {-90,40}})));
   Modelica.Blocks.Interfaces.RealInput TCondensor_set
+  "Condensor temperature setpoint"
     annotation (Placement(
         transformation(extent={{-120,-50},{-80,-10}}),iconTransformation(extent={{-110,
       -10},{-90,10}})));
