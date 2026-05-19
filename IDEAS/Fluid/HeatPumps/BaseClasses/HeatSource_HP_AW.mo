@@ -288,18 +288,28 @@ The results are rescaled to the nominal power of the modelled heat pump (with QN
 and stored in 2 different vectors, <code>Q_vector</code> and <code>P_vector</code>.
 </p>
 <p>
-Finally, the modulation is calculated based on the asked power and the max power at operating conditions:
+Finally, the modulation is calculated based on the asked power and the maximum power at operating conditions. 
+The initial modulation is computed as <code>modulation_init = QAsked / QMax · 100</code>.
+</p>
+<p>
+If <code>useMinMod = true</code>, the final modulation is multiplied by the on/off signal:
+</p>
 <ul>
-<li>
-if <code>modulation_init < modulation_min</code>, the heat pump is OFF, modulation = 0. 
-</li>
-<li>
-if <code>modulation_init > 100%</code>, the modulation is 100%
-</li>
-<li>
-if <code>modulation_init</code> between <code>modulation_min</code> and <code>modulation_start</code>: hysteresis for on/off cycling.
-</li>
+  <li>
+    if <code>modulation_init &lt; modulation_min</code>, the heat pump is OFF and the modulation is 0.
+  </li>
+  <li>
+    if <code>modulation_init &gt; 100%</code>, the modulation is limited to 100%.
+  </li>
+  <li>
+    if <code>modulation_init</code> is between <code>modulation_min</code> and <code>modulation_start</code>, a hysteresis is applied for on/off cycling.
+  </li>
 </ul>
+<p>
+If <code>useMinMod = false</code>, the modulation is calculated directly from <code>modulation_init</code>.
+</p>
+<p>
+In both cases, the modulation is smoothly limited to a maximum of 100%.
 </p>
 <p>
 If the heat pump is on another modulation level, interpolation is made to get <i>P</i> and <i>Q</i> at the real modulation.
