@@ -66,6 +66,7 @@ model HeatSource_HP_AW
         rotation=270,
         origin={-80,100})));
   Modelica.Blocks.Interfaces.RealInput TEnvironment
+  "Temperature of environment for heat losses"
     annotation (Placement(transformation(extent={{-120,10},{-80,50}}), iconTransformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-80,-100})));
