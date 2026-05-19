@@ -131,7 +131,7 @@ model HeatSource_HP_AW
         1.447,1.546,1.748,1.928,2.569,2.936,3.422,3.422])
     annotation (Placement(transformation(extent={{50,-90},{70,-70}})));
 
-  Controls.Discrete.HysteresisRelease_boolean onOff(
+IDEAS.Controls.Discrete.HysteresisRelease_boolean onOff(
     enableRelease=true,
     y(start=0),
     release(start=false))
