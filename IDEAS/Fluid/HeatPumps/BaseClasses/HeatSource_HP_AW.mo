@@ -61,6 +61,7 @@ model HeatSource_HP_AW
         rotation=90,
         origin={-20,-100})));
   Modelica.Blocks.Interfaces.RealInput TEvaporator
+  "Evaporator temperature"
     annotation (Placement(transformation(extent={{-120,-20},{-80,20}}), iconTransformation(extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-80,100})));
