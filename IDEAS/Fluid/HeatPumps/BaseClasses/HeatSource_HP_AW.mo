@@ -54,6 +54,7 @@ model HeatSource_HP_AW
         rotation=90,
         origin={-50,-100})));
   Modelica.Blocks.Interfaces.RealInput m_flowCondensor
+  "Condenor mass-flow rate"
     annotation (Placement(transformation(
           extent={{-120,-110},{-80,-70}}),iconTransformation(
         extent={{-10,-10},{10,10}},
