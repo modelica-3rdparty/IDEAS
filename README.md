@@ -1,3 +1,5 @@
+[![build](https://github.com/open-ideas/IDEAS/actions/workflows/github-actions.yml/badge.svg?branch=master)](https://github.com/open-ideas/IDEAS/actions/workflows/github-actions.yml)
+
 <div align="center">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="IDEAS/Resources/Images/IDEAS-logo-dark.png" style="height:120px;">
