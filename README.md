@@ -1,4 +1,4 @@
-<p align="right">
+<p align="left">
   <a href="https://github.com/open-ideas/IDEAS/actions/workflows/github-actions.yml">
     <img src="https://github.com/open-ideas/IDEAS/actions/workflows/github-actions.yml/badge.svg?branch=master" alt="CI of IDEAS using GitHub Actions">
   </a>
