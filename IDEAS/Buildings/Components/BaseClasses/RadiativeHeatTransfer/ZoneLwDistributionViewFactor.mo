@@ -115,7 +115,7 @@ initial algorithm
     lWall :=Atot[i]/hZone;
 
     //view factor for walls to ceiling and floor
-    if lWall == 0 then
+    if noEvent(lWall == 0) then
       for j in 1:numAzi+2 loop
         vieFacTot[j,i]:=0;
         vieFacTot[i,j]:=0;
@@ -139,7 +139,7 @@ initial algorithm
           if i==j then
             //a wall does not interchange radiant heat with itself
              vieFacTot[i,i] := 0;
-          elseif Atot[i]==0 or Atot[j]==0 then
+          elseif noEvent(Atot[i]==0) or noEvent(Atot[j]==0) then
             vieFacTot[i,j] := 0;
             vieFacTot[j,i] := 0;
           elseif abs(i-j)==1 or abs(i-j)==3 then
@@ -317,6 +317,11 @@ Verification test in IDEAS.Buildings.Validation.Tests.ViewFactorVerification.
 </html>", revisions="<html>
 <ul>
 <li>
+May 20, 2026 by Anna Dell'Isola:<br/>
+Add noEvent in conditional expressions. See issue  
+<a href=https://github.com/open-ideas/IDEAS/issues/1490>#1490</a>.
+</li>
+<li>
 January 19, 2017 by Filip Jorissen:<br/>
 Updated icon for issue
 <a href=https://github.com/open-ideas/IDEAS/issues/641>#641
@@ -326,13 +331,6 @@ Updated icon for issue
 January 19, 2017 by Filip Jorissen:<br/>
 Added options for properly linearising heat exchange.
 </li>
-<li>
-December 8, 2016 by Filip Jorissen:<br/>
-Fixed indexing bug in algorithm.
-</li>
-</ul>
-</html>", revisions="<html>
-<ul>
 <li>
 December 8, 2016 by Filip Jorissen:<br/>
 Fixed indexing bug in algorithm.

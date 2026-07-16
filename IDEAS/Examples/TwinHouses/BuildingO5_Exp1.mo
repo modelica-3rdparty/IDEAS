@@ -6,12 +6,22 @@ model BuildingO5_Exp1
    exp=1,
    redeclare BaseClasses.Structures.TwinhouseO5 struct,
     sim(unify_n50=true,
-        n50=1.64,
-      A0=1,
-      a=0.15));
+      n50=1.64,
+      locTer=IDEAS.BoundaryConditions.Types.LocalTerrain.Custom,
+      A0_custom=1,
+      a_custom=0.15));
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
-        coordinateSystem(preserveAspectRatio=false)),
+   coordinateSystem(preserveAspectRatio=false)),
+    Documentation(revisions="<html>
+<ul>
+<li>
+May 20, 2026, by Anna Dell'Isola:<br/>
+Update custom parameters in <code>sim</code>. See
+<a href=\"https://github.com/open-ideas/IDEAS/issues/1488\">#1488</a>. 
+</li>
+</ul>
+</html>"),
     experiment(
       StartTime=20736000,
       StopTime=23587200,
