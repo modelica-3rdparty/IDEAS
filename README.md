@@ -1,4 +1,6 @@
-[![build](https://github.com/open-ideas/IDEAS/actions/workflows/github-actions.yml/badge.svg?branch=master)](https://github.com/open-ideas/IDEAS/actions/workflows/github-actions.yml)
+<div align="right">
+[![CI of IDEAS using GitHub Actions](https://github.com/open-ideas/IDEAS/actions/workflows/github-actions.yml/badge.svg?branch=master)](https://github.com/open-ideas/IDEAS/actions/workflows/github-actions.yml)
+</div>
 
 <div align="center">
 <picture>
