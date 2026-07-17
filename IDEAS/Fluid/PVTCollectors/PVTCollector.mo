@@ -103,10 +103,6 @@ equation
       points={{-59,50},{-50,50},{-50,52},{-22,52}},
       color={0,0,127},
       smooth=Smooth.None));
-  connect(shaCoe_in, solGaiStc.shaCoe_in) annotation (Line(
-      points={{-120,40},{-40,40},{-40,45},{-22,45}},
-      color={0,0,127},
-      smooth=Smooth.None));
   connect(solGaiStc.QSol_flow, QGai.Q_flow) annotation (Line(
       points={{1,50},{50,50}},
       color={0,0,127},
