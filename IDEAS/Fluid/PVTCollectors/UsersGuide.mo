@@ -11,7 +11,7 @@ for both glazed and unglazed (WISC) collectors. The electrical submodel is
 internally coupled via a datasheet‑derived absorber–fluid heat transfer coefficient.
 </p>
 <h4>Model description</h4>
-<h5>Thermal part</h5>
+<p><b>Thermal part</b><p>
 <p>
 The equations related to the heat losses and heat gains can be found in the following models:
 </p>
@@ -19,14 +19,12 @@ The equations related to the heat losses and heat gains can be found in the foll
 <li>
 Quasi‑dynamic thermal losses: see 
 <a href=\"modelica://IDEAS.Fluid.PVTCollectors.BaseClasses.ISO9806HeatLoss\">
-IDEAS.Fluid.PVTCollectors.BaseClasses.ISO9806HeatLoss
-</a>
+IDEAS.Fluid.PVTCollectors.BaseClasses.ISO9806HeatLoss</a>
 </li>
 <li>
 Solar (thermal) heat gain: see 
 <a href=\"modelica://IDEAS.Fluid.SolarCollectors.BaseClasses.EN12975SolarGain\">
-IDEAS.Fluid.SolarCollectors.BaseClasses.EN12975SolarGain
-</a>
+IDEAS.Fluid.SolarCollectors.BaseClasses.EN12975SolarGain</a>
 </li>
 </ul>
 </p>
@@ -44,24 +42,23 @@ conversion routines are provided in the easy‑to‑use Excel file located at
 is based on (i) SKN‑N0474R0 for ISO 9806:2013 to ISO 9806:2017, and (ii) a newly 
 introduced conversion for ISO 9806:2025 to ISO 9806:2017 as published in Meertens et al. (2026).
 </p>
-<h5>Electrical part</h5>
+<p><b>Electrical part</b></p>
 <p>
-The equations and assumptions related to electrical part can be found in the following model:
+The equations and assumptions related to the electrical part can be found in the following model:
 </p>
 <ul>
 <li>
 Electrical generation: see 
 <a href=\"modelica://IDEAS.Fluid.PVTCollectors.BaseClasses.ElectricalPVT\">
-IDEAS.Fluid.PVTCollectors.BaseClasses.ElectricalPVT
-</a>
+IDEAS.Fluid.PVTCollectors.BaseClasses.ElectricalPVT</a>
 </li>
 </ul>
-<h5>Electrical–thermal coupling</h5>
+<p><b>Electrical–thermal coupling</b></p>
 <p>
 The internal absorber–fluid heat transfer coefficient <i>U<sub>AbsFluid</sub></i> 
 couples the thermal and electrical models by linking the PV cell temperature to 
 the fluid temperature (see Figure 1). This coupling is critical for accurately 
-predicting electrical output.
+predicting the electrical output.
 </p>
 <p>
 The coefficient <i>U<sub>AbsFluid</sub></i> is computed solely from
