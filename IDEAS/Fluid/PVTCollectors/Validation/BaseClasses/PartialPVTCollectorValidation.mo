@@ -1,9 +1,9 @@
 within IDEAS.Fluid.PVTCollectors.Validation.BaseClasses;
 partial model PartialPVTCollectorValidation
   "Base model for UI and UN PVT collector validation models"
-
   extends IDEAS.Fluid.SolarCollectors.BaseClasses.PartialSolarCollector(
     redeclare IDEAS.Fluid.PVTCollectors.Data.Generic per);
+
   parameter Modelica.Units.SI.Efficiency eleLosFac(min=0, max=1) = 0.07
     "Loss factor of the PV panel(s)"
     annotation(Dialog(group="Electrical parameters"));

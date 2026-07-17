@@ -86,12 +86,12 @@ model PVT_UI_Electrical_DayType1
         273.15) "PVT cell temperature [°C]"  annotation (Placement(transformation(extent={{-51,40},{-25,56}})));
 
 equation
-  connect(meaDat.y[idxTFlu],TFluKel. Celsius) annotation (Line(points={{-71,14},{-60,
-          14},{-60,-4},{-92,-4},{-92,-16},{-88,-16}},                                                   color={0,0,127}));
+  connect(meaDat.y[idxTFlu],TFluKel. Celsius) annotation (Line(points={{-71,14},
+          {-68,14},{-68,-6},{-92,-6},{-92,-16},{-88,-16}},                                              color={0,0,127}));
   connect(bou.T_in,TFluKel. Kelvin)        annotation (Line(points={{-60,-16},{-76.5,
           -16}},                                                                        color={0,0,127}));
   connect(bou.m_flow_in, meaDat.y[idxMFlow])
-    annotation (Line(points={{-60,-12},{-60,14},{-71,14}},
+    annotation (Line(points={{-60,-12},{-68,-12},{-68,14},{-71,14}},
                                                          color={0,0,127}));
   connect(bou.ports[1],pvtCol. port_a)
     annotation (Line(points={{-38,-20},{-10,-20}},

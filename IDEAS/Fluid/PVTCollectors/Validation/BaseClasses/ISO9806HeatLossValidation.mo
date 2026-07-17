@@ -1,7 +1,6 @@
 within IDEAS.Fluid.PVTCollectors.Validation.BaseClasses;
 model ISO9806HeatLossValidation
   "Validation variant with term‑by‑term breakdown of ISO9806:2017 standard thermal heat loss"
-
   extends IDEAS.Fluid.PVTCollectors.BaseClasses.ISO9806HeatLoss;
 
   // Diagnostic variables
@@ -45,8 +44,7 @@ equation
 <html>
 <p>
 Extends from the standard quasi‑dynamic heat‑loss model 
-(<a href=\"modelica://IDEAS.Fluid.PVTCollectors.BaseClasses.ISO9806HeatLoss\">
-IDEAS.Fluid.PVTCollectors.BaseClasses.ISO9806QuasiDynamicHeatLoss</a>).  
+(<a href=\"modelica://IDEAS.Fluid.PVTCollectors.BaseClasses.ISO9806HeatLoss\">IDEAS.Fluid.PVTCollectors.BaseClasses.ISO9806QuasiDynamicHeatLoss</a>).  
 For validation purposes, this block adds:
 </p>
 <ul>

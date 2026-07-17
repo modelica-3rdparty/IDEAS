@@ -81,8 +81,8 @@ It is part of a validated, open-source Modelica implementation that relies solel
 The model calculates the electrical output for each segment <i>i ∈ {1, ..., n<sub>seg</sub>}</i> as:
 </p>
 <p align=\"center\" style=\"font-style:italic;\">
-P<sub>el,i</sub> = (A<sub>c</sub> / n<sub>seg</sub>) &#183 (P<sub>nom</sub> / A) 
-&#183 (G<sub>tilt</sub> / G<sub>nom</sub>) &#183 (1 + &beta; &#183 &Delta;T<sub>i</sub>) &#183 (1 - eleLosFac)
+P<sub>el,i</sub> = (A<sub>c</sub> / n<sub>seg</sub>) &#183; (P<sub>nom</sub> / A) 
+&#183; (G<sub>tilt</sub> / G<sub>nom</sub>) &#183; (1 + &beta; &#183; &Delta;T<sub>i</sub>) &#183; (1 - eleLosFac)
 </p>
 <p>
 where:
@@ -91,7 +91,7 @@ where:
 <i>&Delta;T<sub>i</sub> = T<sub>cell,i</sub> - T<sub>ref</sub></i>: temperature difference between PV cell and reference temperature
 </li>
 <li>
-<i>P<sub>nom</sub></i>: nominal PV power under STC [W]
+<i>P<sub>nom</sub></i>: nominal electrical power under standard conditions [W]
 </li>
 <li>
 <i>A</i>: gross collector area [m²]
@@ -106,7 +106,7 @@ where:
 <i>G<sub>nom</sub></i>: nominal irradiance (typically 1000 W/m²)
 </li>
 <li>
-<i>&beta;</i>: temperature coefficient of power [%/K]
+<i>&beta;</i>: temperature coefficient of the electrical power output [1/K]
 </li>
 <li>
 <i>eleLosFac</i>: lumped system loss factor
@@ -124,7 +124,7 @@ The internal heat transfer coefficient <i>UAbsFluid</i> is approximately calcula
 For the mathematical description and visualisation, see <a href='modelica://IDEAS.Fluid.PVTCollectors.UsersGuide'>IDEAS.Fluid.PVTCollectors.UsersGuide</a>.
 </p>
 
-<h5>Electrical performance and losses</h5>
+<h4>Electrical performance and losses</h4>
 <p>
 The electrical submodel includes an overall system loss factor <code>eleLosFac</code>. 
 PVWatts reports a total electrical power loss of 14%, resulting from the following mechanisms:
