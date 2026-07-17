@@ -25,17 +25,25 @@ model ISO9806HeatLoss
 
   Modelica.Blocks.Interfaces.RealInput winSpePla(
     unit="m/s")
-    "Wind speed parallel to collector plane";
+    "Wind speed parallel to collector plane" annotation (
+      Placement(transformation(
+        extent={{-20,-20},{20,20}},
+        rotation=0,
+        origin={-120,30})));
   Modelica.Blocks.Interfaces.RealInput HGloTil(
     unit="W/m2")
-    "Global irradiance on the tilted plane";
+    "Global irradiance on the tilted plane" annotation (
+      Placement(transformation(
+        extent={{-20,-20},{20,20}},
+        rotation=0,
+        origin={-120,-30})));
   Modelica.Blocks.Interfaces.RealInput HHorIR(
     unit="W/m2")
     "Long-wave (sky) irradiance [W/m2]" annotation (
       Placement(transformation(
         extent={{-20,-20},{20,20}},
         rotation=0,
-        origin={-120,0}),   iconTransformation(extent={{-140,-20},{-100,20}})));
+        origin={-120,0})));
 
 annotation (
 defaultComponentName="heaLosStc",

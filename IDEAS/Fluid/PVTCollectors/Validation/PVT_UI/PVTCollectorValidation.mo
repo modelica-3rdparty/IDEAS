@@ -4,8 +4,6 @@ model PVTCollectorValidation
   extends Validation.BaseClasses.PartialPVTCollectorValidation(
     eleLosFac = 0.09);
 
-  Modelica.Units.SI.Velocity winSpeTil "Effective wind speed in collector plane";
-
   outer Modelica.Blocks.Sources.CombiTimeTable meaDat(
     tableOnFile=true,
     tableName="data",
@@ -94,17 +92,12 @@ model PVTCollectorValidation
     annotation (Placement(transformation(extent={{-60,-100},{-40,-80}})));
 
 equation
-  // Wind speed in collector plane
-  winSpeTil = winSpe.y;
-
   Pel = eleGen.Pel;
   Qth = sum(QGai.Q_flow + QLos.Q_flow);
 
   for i in 1:nSeg loop
     qThSeg[i] = (QGai[i].Q_flow + QLos[i].Q_flow) / (ATot_internal / nSeg);
   end for;
-
-  heaLosStc.winSpePla = winSpeTil;
 
   connect(shaCoe_internal, solGaiStc.shaCoe_in);
   connect(shaCoe_in, solGaiStc.shaCoe_in) annotation (Line(
@@ -142,8 +135,8 @@ equation
           -73.55,-51.6},{-60,-51.6}}, color={0,0,127}));
   connect(Eglob.y, longWaveRad.Eglobh_h) annotation (Line(points={{-73.55,-38},
           {-68,-38},{-68,-47.2},{-60,-47.2}}, color={0,0,127}));
-  connect(heaLosStc.HGloTil, I_tot.y) annotation (Line(points={{-22,18},{-32,18},
-          {-32,10},{-35.55,10}}, color={0,0,127}));
+  connect(heaLosStc.HGloTil, I_tot.y) annotation (Line(points={{-22,17},{-34,17},
+          {-34,10},{-35.55,10}}, color={0,0,127}));
   connect(heaLosStc.HHorIR, longWaveRad.lonRad) annotation (Line(points={{-22,
           20},{-26,20},{-26,-55.9},{-36.3,-55.9}}, color={0,0,127}));
   connect(meaDat.y[5], degToRad.u) annotation (Line(points={{5,78},{-40,78},{-40,66}}, color={0,0,127}));
@@ -158,6 +151,8 @@ equation
   connect(qThSegExp.y,eleGen.qth)  annotation (Line(
       points={{-39,-90},{-30,-90},{-30,-70},{-22,-70}},
       color={0,0,127}));
+  connect(winSpe.y, heaLosStc.winSpePla) annotation (Line(points={{-35.55,20},{
+          -34,20},{-34,23},{-22,23}}, color={0,0,127}));
  annotation (
   defaultComponentName="pvtCol",
   Documentation(info="<html>
