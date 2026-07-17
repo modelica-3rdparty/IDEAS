@@ -1,7 +1,6 @@
 within IDEAS.Fluid.PVTCollectors;
 model PVTCollector
   "Model of a photovoltaic–thermal (PVT) collector using the ISO 9806:2017 thermal method with integrated thermal-electrical coupling"
-
   extends IDEAS.Fluid.SolarCollectors.BaseClasses.PartialSolarCollector(
      redeclare IDEAS.Fluid.PVTCollectors.Data.Generic per);
 
@@ -17,7 +16,6 @@ model PVTCollector
     "Internal heat transfer coefficient between the fluid and PV cells; computed from datasheet parameters by default."
     annotation(Dialog(tab="Advanced", group="Electrical parameters"));
 
-  Modelica.Units.SI.Velocity winSpeTil "Effective wind speed in collector plane";
   Modelica.Units.SI.HeatFlux qThSeg[nSeg] "Thermal power per segment";
 
   Modelica.Blocks.Interfaces.RealOutput Pel "Total electrical power output [W]"
@@ -69,6 +67,12 @@ model PVTCollector
     "Calculates the electrical power output of the PVT model"
     annotation (Placement(transformation(extent={{-20,-80},{0,-60}})));
 
+  IDEAS.Fluid.PVTCollectors.BaseClasses.WindSpeedTilted winSpe(
+    final azi=azi,
+    final til=til)
+    "Calculates the effective wind speed in the collector plane"
+    annotation (Placement(transformation(extent={{-80,16},{-60,36}})));
+
   Modelica.Blocks.Math.Add HGloTil "Total global irradiance on collector plane"
     annotation (Placement(transformation(extent={{-55,-95},{-45,-85}})));
   Modelica.Blocks.Sources.RealExpression[nSeg] qThSegExp(final y=qThSeg)
@@ -76,10 +80,6 @@ model PVTCollector
     annotation (Placement(transformation(extent={{-60,-80},{-40,-60}})));
 
 equation
-  // Compute effective wind speed on tilted plane
-  winSpeTil = weaBus.winSpe * sqrt(1 - (
-    Modelica.Math.cos(weaBus.winDir - (azi + Modelica.Constants.pi)) * Modelica.Math.cos(til)
-    + Modelica.Math.sin(weaBus.winDir - (azi + Modelica.Constants.pi)) * Modelica.Math.sin(til))^2);
 
   // Compute thermal power per segment
   for i in 1:nSeg loop
@@ -89,9 +89,6 @@ equation
   // Assign electrical and thermal outputs
   Pel = eleGen.Pel;
   Qth = sum(QGai.Q_flow + QLos.Q_flow);
-
-  heaLosStc.HGloTil = HGloTil.y;
-  heaLosStc.winSpePla = winSpeTil;
 
   connect(shaCoe_internal, solGaiStc.shaCoe_in);
   connect(HDirTil.inc, solGaiStc.incAng) annotation (Line(
@@ -122,7 +119,8 @@ equation
   connect(heaLosStc.TFlu, temSen.T) annotation (Line(points={{-22,14},{-30,14},{
           -30,-20},{-11,-20}}, color={0,0,127}));
   connect(weaBus.TDryBul, heaLosStc.TEnv) annotation (Line(
-      points={{-99.95,80.05},{-100,80.05},{-100,80},{-90,80},{-90,26},{-22,26}},
+      points={{-99.95,80.05},{-100,80.05},{-100,80},{-90,80},{-90,68},{-56,68},{
+          -56,26},{-22,26}},
       color={255,204,51},
       thickness=0.5), Text(
       string="%first",
@@ -130,7 +128,7 @@ equation
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(weaBus.HHorIR, heaLosStc.HHorIR) annotation (Line(
-      points={{-99.95,80.05},{-90,80.05},{-90,20},{-22,20}},
+      points={{-99.95,80.05},{-90,80.05},{-90,68},{-56,68},{-56,20},{-22,20}},
       color={255,204,51},
       thickness=0.5), Text(
       string="%first",
@@ -148,12 +146,35 @@ equation
   connect(qThSegExp.y,eleGen.qth)  annotation (Line(
       points={{-39,-70},{-22,-70}},
       color={0,0,127}));
+  connect(weaBus.winSpe, winSpe.winSpe) annotation (Line(
+      points={{-99.95,80.05},{-90,80.05},{-90,32},{-82,32}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%first",
+      index=-1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(weaBus.winDir, winSpe.winDir) annotation (Line(
+      points={{-99.95,80.05},{-90,80.05},{-90,26},{-82,26}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%first",
+      index=-1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(winSpe.winSpeTil, heaLosStc.winSpePla) annotation (Line(points={{-59,32},
+          {-42,32},{-42,23},{-22,23}}, color={0,0,127}));
+  connect(HGloTil.y, heaLosStc.HGloTil) annotation (Line(points={{-44.5,-90},{-34,
+          -90},{-34,17},{-22,17}}, color={0,0,127}));
     annotation (
   defaultComponentName = "pvtCol",
-
 Documentation(info="<html>
 <p>
-This component models a photovoltaic–thermal (PVT) collector by coupling the ISO 9806:2017 quasi-dynamic thermal method with an internal electrical model. The model uses only datasheet parameters (no measured calibration data) and has been validated experimentally for unglazed PVT collectors (with and without rear insulation) under a wide range of weather conditions.
+This component models a photovoltaic–thermal (PVT) collector by coupling
+the ISO 9806:2017 quasi-dynamic thermal method with an internal electrical model.
+The model uses only datasheet parameters (no measured calibration data) and
+has been validated experimentally for unglazed PVT collectors (with and without rear insulation)
+under a wide range of weather conditions.
 </p>
 <p>
 The main equations used in this model can be found in the following submodels, as described in the 
@@ -181,10 +202,9 @@ IDEAS.Fluid.SolarCollectors.BaseClasses.EN12975SolarGain
 </a>
 </li>
 </ul>
-
 <h4>Implementation Notes</h4>
 <p>
-This model supports PVT collectors, discretized into segments to capture temperature gradients. 
+This model supports PVT collectors, discretised into segments to capture temperature gradients. 
 It is compatible with dynamic simulations where irradiance and fluid temperatures vary over time.
 </p>
 </html>",
