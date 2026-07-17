@@ -100,10 +100,6 @@ equation
   end for;
 
   connect(shaCoe_internal, solGaiStc.shaCoe_in);
-  connect(shaCoe_in, solGaiStc.shaCoe_in) annotation (Line(
-      points={{-120,40},{-40,40},{-40,45},{-22,45}},
-      color={0,0,127},
-      smooth=Smooth.None));
   connect(heaLosStc.TFlu, temSen.T) annotation (Line(
       points={{-22,14},{-30,14},{-30,-20},{-11,-20}},
       color={0,0,127},
