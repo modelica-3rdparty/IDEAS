@@ -8,7 +8,7 @@ model RadSolData "Selects or generates correct solar data for this surface"
     "Simulation information manager for climate data"
     annotation (Placement(transformation(extent={{-100,80},{-80,100}})));
 protected
-  input IDEAS.Buildings.Components.Interfaces.WeaBus
+  IDEAS.Buildings.Components.Interfaces.WeaBus
     weaBus(numSolBus=sim.numIncAndAziInBus, outputAngles=sim.outputAngles)
     annotation (HideResults=true,Placement(transformation(extent={{90,70},{110,90}})));
 
@@ -190,6 +190,12 @@ If the correct data is not contained by the bus, custom solar data is calculated
 </p>
 </html>", revisions="<html>
 <ul>
+<li>
+August 4, 2026, by Lucas Verleyen:<br/>
+Removed causal prefix for expandable connector `weaBus`.
+See <a href=\"https://github.com/open-ideas/IDEAS/issues/1500\">
+#1500</a>
+</li>
 <li>
 May 22, 2022, by Filip Jorissen:<br/>
 Fixed Modelica specification compatibility issue.
