@@ -1,3 +1,9 @@
+<p align="left">
+  <a href="https://github.com/open-ideas/IDEAS/actions/workflows/github-actions.yml">
+    <img src="https://github.com/open-ideas/IDEAS/actions/workflows/github-actions.yml/badge.svg?branch=master" alt="CI of IDEAS using GitHub Actions">
+  </a>
+</p>
+
 <div align="center">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="IDEAS/Resources/Images/IDEAS-logo-dark.png" style="height:120px;">
