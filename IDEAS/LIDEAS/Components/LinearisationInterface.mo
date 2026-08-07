@@ -2,15 +2,15 @@ within IDEAS.LIDEAS.Components;
 model LinearisationInterface
   "Extend this interface if you want to linearise a model"
 
-  inner input IDEAS.Buildings.Components.Interfaces.WindowBus[sim.nWindow]
+  inner IDEAS.Buildings.Components.Interfaces.WindowBus[sim.nWindow]
     winBusIn(each nLay=sim.nLayWin) if sim.linearise;
-  input IDEAS.Buildings.Components.Interfaces.WeaBus weaBus(
+  IDEAS.Buildings.Components.Interfaces.WeaBus weaBus(
     outputAngles=sim.outputAngles,
     final numSolBus=sim.numIncAndAziInBus) if sim.linearise;
-  output IDEAS.Buildings.Components.Interfaces.WindowBus[sim.nWindow]
+  IDEAS.Buildings.Components.Interfaces.WindowBus[sim.nWindow]
      winBusOut(each nLay=sim.nLayWin) if sim.createOutputs
     "Dummy for getting outputs";
-  output IDEAS.Buildings.Components.Interfaces.WeaBus weaBusOut(
+  IDEAS.Buildings.Components.Interfaces.WeaBus weaBusOut(
     outputAngles=sim.outputAngles,
    final numSolBus=sim.numIncAndAziInBus) if sim.createOutputs;
   inner replaceable
@@ -23,6 +23,12 @@ equation
   connect(weaBus,sim.weaBus);
   annotation (Documentation(revisions="<html>
 <ul>
+<li>
+August 4, 2026, by Lucas Verleyen:<br/>
+Removed causal prefix for expandable connectors `weaBus` and `winBus`.
+See <a href=\"https://github.com/open-ideas/IDEAS/issues/1500\">
+#1500</a>
+</li>
 <li>
 April 11, 2022, by Filip Jorissen<br/>
 Removed protected clause since it caused a singularity in Dymola2022x.
